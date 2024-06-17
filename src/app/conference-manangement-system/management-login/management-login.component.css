@@ -1,0 +1,26 @@
+.button-right {
+    display: flex;
+    justify-content: flex-end;
+  
+  }
+  #book{
+    color:white;
+  }
+  table {
+    width: 100%;
+  }
+  #list{
+    background-color: rgb(149, 178, 187);
+    color:white;
+    border-radius:15px;
+  }
+  #edit{
+    color:#373756;
+  }
+  #del{
+    margin-left: 10px;
+    color:rgb(209, 3, 3);
+  }
+  h4{
+    color:rgb(255, 255, 255);
+  }

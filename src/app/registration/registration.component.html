@@ -1,0 +1,150 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2>Registration Form</h2>
+      <form
+        [formGroup]="registration"
+        (ngSubmit)="onSubmit()"
+        class="form-center"
+      >
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control form-control-sm"
+            id="name"
+            formControlName="name"
+            [ngClass]="{
+              'is-invalid':
+                getControl('name')?.invalid &&
+                (getControl('name')?.dirty || getControl('name')?.touched)
+            }"
+          />
+          <div
+            *ngIf="
+              getControl('name')?.invalid &&
+              (getControl('name')?.dirty || getControl('name')?.touched)
+            "
+            class="text-danger"
+          >
+            <small *ngIf="getControl('name')?.errors?.['required']"
+              >Name is required.</small
+            >
+            <small *ngIf="getControl('name')?.errors?.['minlength']"
+              >Name must be at least 3 characters long.</small
+            >
+            <small *ngIf="getControl('name')?.errors?.['maxlength']"
+              >Name cannot be more than 32 characters long.</small
+            >
+            <small *ngIf="getControl('name')?.errors?.['pattern']"
+              >Name can only contain alphabets and spaces.</small
+            >
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="mobile" class="form-label">Mobile No.</label>
+          <input
+            type="text"
+            class="form-control form-control-sm"
+            id="mobile"
+            formControlName="mobile"
+            [ngClass]="{
+              'is-invalid':
+                getControl('mobile')?.invalid &&
+                (getControl('mobile')?.dirty || getControl('mobile')?.touched)
+            }"
+          />
+          <div
+            *ngIf="
+              getControl('mobile')?.invalid &&
+              (getControl('mobile')?.dirty || getControl('mobile')?.touched)
+            "
+            class="text-danger"
+          >
+            <small *ngIf="getControl('mobile')?.errors?.['required']"
+              >Mobile number is required.</small
+            >
+            <small *ngIf="getControl('mobile')?.errors?.['pattern']"
+              >Mobile number must be 10 digits.</small
+            >
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control form-control-sm"
+            id="email"
+            formControlName="email"
+            [ngClass]="{
+              'is-invalid':
+                getControl('email')?.invalid &&
+                (getControl('email')?.dirty || getControl('email')?.touched)
+            }"
+          />
+          <div
+            *ngIf="
+              getControl('email')?.invalid &&
+              (getControl('email')?.dirty || getControl('email')?.touched)
+            "
+            class="text-danger"
+          >
+            <small *ngIf="getControl('email')?.errors?.['required']"
+              >Email is required.</small
+            >
+            <small *ngIf="getControl('email')?.errors?.['email']"
+              >Invalid email address.</small
+            >
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control form-control-sm"
+            id="password"
+            formControlName="password"
+            [ngClass]="{
+              'is-invalid':
+                getControl('password')?.invalid &&
+                (getControl('password')?.dirty ||
+                  getControl('password')?.touched)
+            }"
+          />
+          <div
+            *ngIf="
+              getControl('password')?.invalid &&
+              (getControl('password')?.dirty || getControl('password')?.touched)
+            "
+            class="text-danger"
+          >
+            <small *ngIf="getControl('password')?.errors?.['required']"
+              >Password is required.</small
+            >
+            <small *ngIf="getControl('password')?.errors?.['minlength']"
+              >Password must be at least 6 characters long.</small
+            >
+            <small *ngIf="getControl('password')?.errors?.['maxlength']"
+              >Password cannot be more than 32 characters long.</small
+            >
+          </div>
+        </div>
+
+        <hr />
+        <p>If you have already registered <a href="" (click)="loginHere($event)">Login</a></p>
+
+        <button
+        [disabled]="registration.invalid"
+          type="submit"
+          class="btn btn-primary btn-block"
+          (click)="OnRegister()"
+        >
+          Register
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

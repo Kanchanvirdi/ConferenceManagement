@@ -1,0 +1,82 @@
+<div *ngIf="!inLoginPage()">
+<div *ngIf="!inRegistrationPage()">
+  <div *ngIf="!inAdmin()" >
+    <div *ngIf="!inregistrationlist()">
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
+  <div class="container-fluid">
+    <a class="navbar-brand" id="light1" routerLink="department"
+      ><img src="../../assets/images/pngtre-removebg-preview.png" height="45px"
+    /></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse justify-content-between"
+      id="navbarNav"
+    >
+      <ul class="navbar-nav conference-management-system" id="light1">
+        <p routerLink="department">Conference Management System</p>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            id="light1"
+            routerLink="department"
+            >Booking Table</a
+          >
+        </li>
+   <li class="nav-item">     
+          <a
+            class="nav-link active"
+            aria-current="page"
+            id="light1"
+            routerLink="management"
+            >Booking List</a
+          >
+        </li>
+        <li class="nav-item">     
+          <a
+            class="nav-link active"
+            aria-current="page"
+            id="light1"
+            
+        (click)="openLogoutConfirmation()"
+            >Log Out</a
+          >
+        </li> 
+        <!-- <li class="nav-item">     
+          <a
+            class="nav-link active"
+            aria-current="page"
+            id="light1"
+            routerLink="registration"
+            >Registration</a
+          >
+        </li> -->
+        <!-- <li class="nav-item">     
+          <a
+            class="nav-link active"
+            aria-current="page"
+            id="light1"
+            routerLink="login"
+            >Login</a
+          >
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</nav>
+</div>
+</div>
+</div>
+</div>

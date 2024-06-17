@@ -1,0 +1,47 @@
+
+h1[mat-dialog-title] {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ff5252; 
+  }
+  
+  div[mat-dialog-content] {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #333; 
+  }
+  
+  
+  div[mat-dialog-actions] {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+  }
+  
+ 
+  button[mat-button] {
+    margin-left: 10px;
+    color: #fff;
+    background-color: #4ac5e4; 
+    border-style: none;
+
+  }
+  
+  button[mat-button]:hover {
+    background-color: #4ac5e4; 
+border-color: none;
+border-style: none;
+
+  }
+  
+  button[mat-button]:first-child {
+    background-color: #f44336; 
+    border-style: none;
+  }
+  
+  button[mat-button]:first-child:hover {
+    background-color: #d32f2f; 
+    border-color: none;
+  }
+  

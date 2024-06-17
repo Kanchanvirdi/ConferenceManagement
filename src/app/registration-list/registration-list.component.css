@@ -1,0 +1,72 @@
+.button-right {
+    display: flex;
+    justify-content: flex-end;
+  
+  }
+  #book{
+    color:white;
+  }
+  table {
+    width: 100%;
+    border:red;
+
+    
+  }
+  #list{
+    background-color: rgb(149, 178, 187);
+    color:white;
+    border-radius:15px;
+  }
+  #edit{
+    color:#373756;
+  }
+  #del{
+    margin-left: 10px;
+    color:rgb(209, 3, 3);
+  }
+  h4{
+    color:rgb(255, 255, 255);
+  }
+  h2{
+    text-align: center;
+    color: rgb(44, 186, 221);
+
+  }
+  th{
+    color:rgb(0, 204, 255);
+   
+   
+  
+  
+    
+  }
+  #list{
+    background-color: rgb(149, 178, 187);
+    color:white;
+    border-radius:15px;
+  }
+  #light1 {
+    color: white !important;
+    font-style: italic;
+  }
+  img {
+    border-radius: 10px;
+    display: block;
+  }
+  .conference-management-system p::first-letter {
+    font-size: 1.5rem;
+  }
+  nav {
+    position: relative;
+    width: 100%;
+  }
+ 
+   
+  @media (max-width: 767px) {
+    .conference-management-system p {
+      font-size: 1rem;
+    }
+    .navbar-brand img {
+      height: 35px; 
+    }
+  }

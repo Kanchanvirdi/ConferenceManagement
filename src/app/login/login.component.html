@@ -1,0 +1,62 @@
+<div class="container ">
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <form  [formGroup]="userForm" (ngSubmit)="onSubmit()"class="form-center">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control form-control-sm" id="email" formControlName="email"  name="email"   [ngClass]="{
+              'is-invalid': getControl('email')?.errors && getControl('email')?.touched
+            }"
+             >
+           
+            <div
+            *ngIf="getControl('email')?.errors && getControl('email')?.touched"
+            class="invalid-feedback"
+          >
+            <small
+              class="text-danger"
+              *ngIf="getControl('email')?.errors?.['required']"
+              >Email is required.</small
+            >
+            <small
+              class="text-danger"
+              *ngIf="getControl('email')?.errors?.['email']"
+              >Invalid email address.</small
+            >
+          </div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control form-control-sm" id="password" name="password" formControlName="password"  name="password"  [ngClass]="{
+              'is-invalid': getControl('password')?.errors && getControl('password')?.touched
+            }"
+         >
+            <div
+            *ngIf="getControl('password')?.errors && getControl('password')?.touched"
+            class="invalid-feedback"
+          >
+            <small
+              class="text-danger"
+              *ngIf="getControl('password')?.errors?.['required']"
+              >Password is required.</small
+            >
+            <small
+              class="text-danger"
+              *ngIf="getControl('password')?.errors?.['minlength']"
+              >Password must be at least 6 characters long.</small
+            >
+          </div>
+          </div>
+          <hr/>
+          <p>Create new registration <a href="" (click)="clickHere($event)">Click here</a></p>
+          <button type="submit" class="btn btn-primary btn-block" (click)="OnLogin()" [disabled]="userForm.invalid" >Login</button>
+
+
+        
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+  

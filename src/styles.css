@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Styles for the dialog title */
+h1[mat-dialog-title] {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ff5252; /* Custom color for the title */
+  }
+  
+  /* Styles for the dialog content */
+  div[mat-dialog-content] {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #333; /* Custom color for the text */
+  }
+  
+  /* Styles for the dialog actions */
+  div[mat-dialog-actions] {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+  }
+  
+  /* Styles for the buttons */
+  button[mat-button] {
+    margin-left: 10px;
+    color: #fff;
+    background-color: #3f51b5; /* Custom button color */
+  }
+  
+  button[mat-button]:hover {
+    background-color: #303f9f; /* Custom button hover color */
+  }
+  
+  button[mat-button]:first-child {
+    background-color: #f44336; /* Custom color for the "No" button */
+    border-color: none;
+  }
+  
+  button[mat-button]:first-child:hover {
+    background-color: #d32f2f; /* Custom hover color for the "No" button */
+    border-color: none;
+  }
+  
