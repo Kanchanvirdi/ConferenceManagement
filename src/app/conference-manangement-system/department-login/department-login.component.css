@@ -10,12 +10,25 @@
   align-items: center;
   margin-top: 10px;
 }
+
 .container {
-  display: grid;
+  /* display: grid;
   margin-left: 0px;
   padding-left: 0px;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
+  /* grid-template-columns: 1fr 1fr; */
+  /* grid-template-rows: 1fr; */
+  /* grid-template-columns: auto auto ;
+  grid-gap: 100px;
+  justify-content: space-evenly;
+   */ 
+   display: grid;
+    /* margin-left: 214px; */
+    padding-left: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: auto auto;
+    grid-gap: 49px;
+    justify-content: space-evenly;
 }
 button {
   width: 450px;
@@ -25,10 +38,7 @@ button {
   .container {
     display: block;  
   }
-  img {
-    width: 600px;
-    height: 400px;
-  }
+ 
   .container-fluid {
     flex-direction: column; 
     margin-top: 0; 

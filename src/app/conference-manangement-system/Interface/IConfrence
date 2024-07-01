@@ -8,3 +8,13 @@ timefrom:string;
 
 }
  
+
+export interface Booking {
+    name: string;
+    department: string;
+    date: string;
+    timefrom: string;
+    timeto: string;
+  }
+  
+ 

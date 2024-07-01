@@ -34,6 +34,10 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 import { MatButtonModule } from '@angular/material/button';
 import { LogoutboxComponent } from './registrationList/logoutbox/logoutbox.component';
 import { LogoutComponent } from './registration-list/logout/logout.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+ 
+ 
 
 
 
@@ -56,6 +60,10 @@ import { LogoutComponent } from './registration-list/logout/logout.component';
     ConfirmationDialogComponent,
     LogoutboxComponent,
     LogoutComponent,
+    AboutComponent,
+    ContactComponent,
+    
+    
   
   ],
   imports: [
@@ -83,7 +91,7 @@ import { LogoutComponent } from './registration-list/logout/logout.component';
     MatIconModule,
     
   ],
-  providers: [ ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -5,7 +5,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-info">
   <div class="container-fluid">
     <a class="navbar-brand" id="light1" routerLink="department"
-      ><img src="../../assets/images/pngtre-removebg-preview.png" height="45px"
+      ><img src="../../../assets/images/logo8595951b-62be8c9420325-x2.png" height="40px"
     /></a>
     <button
       class="navbar-toggler"
@@ -23,7 +23,7 @@
       id="navbarNav"
     >
       <ul class="navbar-nav conference-management-system" id="light1">
-        <p routerLink="department">Conference Management System</p>
+        <p routerLink="department" id="c">Conference Management System</p>
       </ul>
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -49,29 +49,31 @@
             class="nav-link active"
             aria-current="page"
             id="light1"
+            routerLink="about"
+            >About</a
+          >
+        </li>
+        <li class="nav-item">     
+          <a
+            class="nav-link active"
+            aria-current="page"
+            id="light1"
+            routerLink="contact"
+            >Contact</a
+          >
+        </li>
+        <li class="nav-item">     
+          <a
+            class="nav-link active"
+            aria-current="page"
+            id="light1"
             
         (click)="openLogoutConfirmation()"
             >Log Out</a
           >
         </li> 
-        <!-- <li class="nav-item">     
-          <a
-            class="nav-link active"
-            aria-current="page"
-            id="light1"
-            routerLink="registration"
-            >Registration</a
-          >
-        </li> -->
-        <!-- <li class="nav-item">     
-          <a
-            class="nav-link active"
-            aria-current="page"
-            id="light1"
-            routerLink="login"
-            >Login</a
-          >
-        </li> -->
+  
+          
       </ul>
     </div>
   </div>

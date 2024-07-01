@@ -34,7 +34,7 @@ export class NavComponent {
   }
 
   logout(): void {
-    // Implement your logout logic here.
+  
     this.router.navigate(['login']);
   }
 }

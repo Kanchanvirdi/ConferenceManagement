@@ -82,7 +82,7 @@ export class AdminComponent {
 
   
   requestBody(requestBody: any) {
-    throw new Error('Method not implemented.');
+    throw new Error('Method not implemente.');
   }
   OnLogin(): void {
     const adminData = this.admin.value;

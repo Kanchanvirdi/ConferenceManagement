@@ -1,9 +1,10 @@
+
 <div class="container">
-  <div class="image">
-    <img src="../../assets/images/p-removebg-preview.png" alt="Conference Management System" />
-  </div>
+
   <div class="text" id="main">
-    <h4 class="header">{{ isEditMode ?'Update Form': 'Fill Booking Form' }}</h4>
+    <h4 class="header">
+      {{ isEditMode ? "Update Form" : "Fill Booking Form" }}
+    </h4>
     <div class="container-fluid">
       <form [formGroup]="userForm">
         <div class="mt-5 box">
@@ -17,12 +18,20 @@
                   type="text"
                   formControlName="name"
                   class="form-control"
-                  [ngClass]="{ error: getControl('name')?.errors && getControl('name')?.touched }"
+                  [ngClass]="{
+                    error: getControl('name')?.errors && getControl('name')?.touched
+                  }"
                 />
                 <div *ngIf="getControl('name')?.errors && getControl('name')?.touched">
-                  <small class="text-danger" *ngIf="getControl('name')?.errors?.['required']">First name is required.</small>
-                  <small class="text-danger" *ngIf="getControl('name')?.errors?.['maxlength']">Only 32 Characters are allowed.</small>
-                  <small class="text-danger" *ngIf="getControl('name')?.errors?.['pattern']">Please use Alphabets.</small>
+                  <small class="text-danger" *ngIf="getControl('name')?.errors?.['required']">
+                    First name is required.
+                  </small>
+                  <small class="text-danger" *ngIf="getControl('name')?.errors?.['maxlength']">
+                    Only 32 Characters are allowed.
+                  </small>
+                  <small class="text-danger" *ngIf="getControl('name')?.errors?.['pattern']">
+                    Please use Alphabets.
+                  </small>
                 </div>
               </div>
             </div>
@@ -39,19 +48,24 @@
                 class="form-control"
                 id="department"
                 formControlName="department"
-                [ngClass]="{ error: getControl('department')?.errors && getControl('department')?.touched }"
+                [ngClass]="{
+                  error: getControl('department')?.errors && getControl('department')?.touched
+                }"
               >
                 <option value="Select" disabled selected>Select</option>
                 <option value="FrontEnd">FrontEnd</option>
                 <option value="BackEnd">BackEnd</option>
                 <option value="Quality Assurance">Quality Assurance</option>
                 <option value="Testing">Testing</option>
+                <option value="HR">HR</option>
                 <option value="Management">Management</option>
                 <option value="Accountant">Accountant</option>
                 <option value="Intern">Intern</option>
               </select>
               <div *ngIf="getControl('department')?.errors && getControl('department')?.touched">
-                <small class="text-danger" *ngIf="getControl('department')?.errors?.['required']">Department is required.</small>
+                <small class="text-danger" *ngIf="getControl('department')?.errors?.['required']">
+                  Department is required.
+                </small>
               </div>
             </div>
           </div>
@@ -67,16 +81,24 @@
                 type="date"
                 formControlName="date"
                 class="form-control"
-                [ngClass]="{ error: getControl('date')?.errors && getControl('date')?.touched }"
+                [ngClass]="{
+                  error: getControl('date')?.errors && getControl('date')?.touched
+                }"
               />
               <div *ngIf="getControl('date')?.errors && getControl('date')?.touched">
-                <small class="text-danger" *ngIf="getControl('date')?.errors?.['required']">Date is required.</small>
-                <small class="text-danger" *ngIf="getControl('date')?.errors?.['pattern']">Invalid date format.</small>
+                <small class="text-danger" *ngIf="getControl('date')?.errors?.['required']">
+                  Date is required.
+                </small> 
+                <small class="text-danger" *ngIf="getControl('date')?.errors?.['pastDate']">
+                  The date cannot be in the past.
+                </small>
+                <!-- <small class="text-danger" *ngIf="getControl('date')?.errors?.['pattern']">
+                  Invalid date format.
+                </small> -->
               </div>
             </div>
           </div>
         </div>
-
         <div class="form-row">
           <div class="col-md-12">
             <div class="form-group mt-4">
@@ -87,10 +109,14 @@
                 type="time"
                 formControlName="timefrom"
                 class="form-control"
-                [ngClass]="{ error: getControl('timefrom')?.errors && getControl('timefrom')?.touched }"
+                [ngClass]="{
+                  error: getControl('timefrom')?.errors && getControl('timefrom')?.touched
+                }"
               />
               <div *ngIf="getControl('timefrom')?.errors && getControl('timefrom')?.touched">
-                <small class="text-danger" *ngIf="getControl('timefrom')?.errors?.['required']">Time is required.</small>
+                <small class="text-danger" *ngIf="getControl('timefrom')?.errors?.['required']">
+                  Time is required.
+                </small>
               </div>
             </div>
           </div>
@@ -106,24 +132,34 @@
                 type="time"
                 formControlName="timeto"
                 class="form-control"
-                [ngClass]="{ error: getControl('timeto')?.errors && getControl('timeto')?.touched }"
+                [ngClass]="{
+                  error: getControl('timeto')?.errors && getControl('timeto')?.touched
+                }"
               />
               <div *ngIf="getControl('timeto')?.errors && getControl('timeto')?.touched">
-                <small class="text-danger" *ngIf="getControl('timeto')?.errors?.['required']">Time is required.</small>
+                <small class="text-danger" *ngIf="getControl('timeto')?.errors?.['required']">
+                  Time is required.
+                </small>
               </div>
             </div>
           </div>
         </div>
 
         <div style="margin-top: 10px">
-          <button type="button" id="bottom" class="btn btn-info" [disabled]="!userForm.valid" (click)="OnSubmit()">
-            {{ isEditMode ? 'Update' : 'Save' }}
+          <button
+            type="button"
+            id="bottom"
+            class="btn btn-info"
+            [disabled]="!userForm.valid"
+            (click)="onSubmit()"
+          >
+            {{ isEditMode ? "Update" : "Save" }}
           </button>
-          
         </div>
       </form>
-
-      <!-- <button class="btn btn-info" *ngIf="!isEditMode" (click)="toggleEditMode()">Edit</button> -->
     </div>
+  </div>
+  <div class="image" id="photo">
+    <img src="../../../assets/images/3928469-removebg-preview.png" alt="Conference Management System" height="100%" />
   </div>
 </div>

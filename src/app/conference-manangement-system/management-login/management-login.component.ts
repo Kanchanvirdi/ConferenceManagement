@@ -35,6 +35,7 @@ export class ManagementLoginComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   productmessage: undefined | string;
   employeedata = undefined;
+  bookings: any;
 
   constructor(
     private fb: FormBuilder,
@@ -54,6 +55,7 @@ export class ManagementLoginComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    this.fetchBookings();
     this.dataService.getAll().subscribe((data) => {
       this.dataSource.data = data;
       this.listData = data;
@@ -63,6 +65,17 @@ export class ManagementLoginComponent implements OnInit, AfterViewInit {
       this.listData = data;
       this.dataSource.data = this.listData;
     });
+  }
+ 
+  fetchBookings(): void {
+    this.dataService.getBookings().subscribe(
+      (bookings: any) => {
+        this.bookings = bookings;
+      },
+      (error: any) => {
+        console.error('Error fetching bookings:', error);
+      }
+    );
   }
 
   ngAfterViewInit() {

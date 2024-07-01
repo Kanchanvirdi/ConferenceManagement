@@ -1,8 +1,18 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataService } from '../service/data.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
+
+interface Booking {
+  name: string;
+  department: string;
+  date: string;
+  timefrom: string;
+  timeto: string;
+}
 
 @Component({
   selector: 'app-department-login',
@@ -12,10 +22,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class DepartmentLoginComponent implements OnInit {
   userForm!: FormGroup;
   nRegex = /^[a-zA-Z]+( [a-zA-Z]+)*$/;
-  isEditMode: boolean = false; // Flag to control edit modeformgr
-  formgoup:FormGroup | undefined
-
-
+  isEditMode: boolean = false;
+  bookings: Booking[] = [];
+  timeSlotForm!: FormGroup;
+  availabilityMessage: string = 'yes';
+  userList: any[] = [];
 
   constructor(
     private service: DataService,
@@ -32,7 +43,7 @@ export class DepartmentLoginComponent implements OnInit {
         Validators.pattern(this.nRegex)
       ]),
       department: new FormControl('', [Validators.required]),
-      date: new FormControl('', [Validators.required]),
+      date: new FormControl('', [Validators.required, this.pastDateValidator]),
       timefrom: new FormControl('', [
         Validators.required,
         Validators.pattern(/^([01]\d|2[0-3]):?([0-5]\d)$/)
@@ -43,15 +54,24 @@ export class DepartmentLoginComponent implements OnInit {
       ])
     });
 
-    
     const element = history.state.element;
     if (element) {
       this.getItem(element);
       this.isEditMode = true;
     } else {
       this.isEditMode = false;
-      this.userForm.reset(); 
+      this.userForm.reset();
     }
+  }
+
+  pastDateValidator(control: FormControl): { [key: string]: boolean } | null {
+    const inputDate = new Date(control.value);
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+    if (inputDate < currentDate) {
+      return { pastDate: true };
+    }
+    return null;
   }
 
   getItem(element: any) {
@@ -75,34 +95,27 @@ export class DepartmentLoginComponent implements OnInit {
     }
   }
 
-  OnSubmit() {
-    if (this.userForm.invalid) {
-      this.toastr.error('Please fill in all required fields correctly.');
-      return;
-    }
-
-    const requestBody = {
-      name: this.userForm.value.name,
-      department: this.userForm.value.department,
-      date: this.userForm.value.date,
-      timefrom: this.userForm.value.timefrom,
-      timeto: this.userForm.value.timeto
-    };
-
-    this.service.addData(requestBody).subscribe(
-      (response: any) => {
-        this.toastr.success('Data saved successfully!');
-        console.warn('POST service data', response);
-        this.router.navigate(['/management']);
-      },
-      (error: any) => {
-        if (error.status === 200) {
-          this.toastr.success('Data saved successfully!');
+  onSubmit(): void { debugger
+    if (this.userForm.valid) {
+      const userData = this.userForm.value;
+      this.service.addData(userData).subscribe({
+        next: (response) => {
+          this.toastr.success('Data is added successfully.');
           this.router.navigate(['/management']);
-        } else {
-          this.toastr.error('Failed to save data. Please try again.');
+        },
+        error: (error) => {
+          if (error.status === 409) { // Conflict
+            this.toastr.error('The time slot is already booked.');
+          } else {
+            this.toastr.success('Succesfully added the data');
+            this.router.navigate(['/management']);
+          }
         }
+      });
+    } else {
+      if (this.getControl('date')?.errors?.['pastDate']) {
+        this.toastr.error('The selected date is in the past.');
       }
-    );
+    }
   }
 }

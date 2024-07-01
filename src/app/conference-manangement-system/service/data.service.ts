@@ -1,18 +1,22 @@
 import { Injectable, inject } from '@angular/core';
-import { BehaviorSubject, Observable, observeOn, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, observeOn, throwError } from 'rxjs';
 
 import {
   HttpClient,
   HttpErrorResponse,
   HttpHeaders,
+  HttpResponse,
  
 } from '@angular/common/http';
-import { listData } from '../Interface/Idata';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
+  addUser(value: any) {
+    throw new Error('Method not implemented.');
+  }
+ 
   getDataById(editId: string) {
     throw new Error('Method not implemented.');
   }
@@ -20,23 +24,17 @@ export class DataService {
     throw new Error('Method not implemented.');
   }
   dataSubject: any;
-  // updateData(value: any): Observable<any> {
-  //   return this.http.put<any[]>(`${this.baseUrl}/Conference/` +value.id,value)
-  // }
   dataService: any;
   toastr: any;
 
-  // updateUser(user: any): Observable<any> {
-  //   return this.http.put(`${this.baseUrl}/Conference/${user.id}`, user, {
-  //     responseType: 'text',
-  //   });
-  // }
+
   currentData: any;
   apiCall(Department: string) {
     throw new Error('Method not implemented.');
   }
   baseUrl = 'https://localhost:7192/api';
   constructor(private http: HttpClient) {}
+  
 
   getAll(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/Conference/GetAll`);
@@ -44,6 +42,7 @@ export class DataService {
   getalll( ){
     return this.http.get(`${this.baseUrl}/Registartion/getall`);
   }
+  
 
   addData(data: any): Observable<any> {
     const requestBody = {
@@ -67,4 +66,20 @@ export class DataService {
 
   }
   
+  saveBooking(booking: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/Conference`, booking).pipe(
+      catchError((error: any) => {
+        throw error;
+      })
+    );
+  }
+  getBookings(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/Conference/GetAll`).pipe(
+      catchError((error: any) => {
+        throw error;
+      })
+    );
+  }
+ 
 }
+

@@ -1,6 +1,8 @@
 #light1 {
   color: white !important;
   font-style: italic;
+  margin-top: 10px !important;
+    margin-bottom: 0.4rem !important;
 }
 img {
   border-radius: 10px;
@@ -12,6 +14,9 @@ img {
 nav {
   position: relative;
   width: 100%;
+}
+#c{
+  margin-top: 10px;
 }
 
 @media (max-width: 767px) {
